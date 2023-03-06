@@ -1,8 +1,8 @@
-def summ(a, b):
+def addition(a, b):
     return a + b
 
-def minus(a, b):
+def soustraction(a, b):
     return a - b
 
-def multiply(a, b):
+def multiplication (a, b):
     return a * b
