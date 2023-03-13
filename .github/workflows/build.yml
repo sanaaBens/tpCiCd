@@ -6,10 +6,7 @@ jobs:
   tests:
     runs-on: ${{ matrix.os }}
     timeout-minutes: 10
-    env:
-      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-
-
+    
     strategy:
       matrix:
         os: [ubuntu-latest]
@@ -32,18 +29,11 @@ jobs:
         run: |
           python -m pytest
 
-      - name: Send custom JSON data to Slack workflow
-        id: slack
-        uses: slackapi/slack-github-action@v1.23.0
-        with:
-          # This data can be any valid JSON from a previous step in the GitHub Action
-          payload: |
-            {
-              "key": "value",
-              "foo": "bar"
-            }
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+    - name: Send GitHub Action trigger data to Slack workflow
+    id: slack
+    uses: slackapi/slack-github-action@v1.23.0
+    env:
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
 
 
       - name: Python Checkstyle
