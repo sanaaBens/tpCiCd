@@ -30,10 +30,10 @@ jobs:
           python -m pytest
 
      - name: Python Checkstyle
-        timeout-minutes: 10
-        run: |
+       timeout-minutes: 10
+       run: |
 
-          pylint 
+        pylint 
 
     - name: Send GitHub Action trigger data to Slack workflow
       id: slack
