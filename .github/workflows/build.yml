@@ -6,10 +6,11 @@ jobs:
   tests:
     runs-on: ${{ matrix.os }}
     timeout-minutes: 10
-    
+
     strategy:
       matrix:
         os: [ubuntu-latest]
+        
 
     steps:
       - name: Check out Git repository
@@ -23,19 +24,16 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          pip install -r dependences.txt
 
       - name: Run tests
         run: |
           python -m pytest
+          pip install pylint
 
-     - name: Python Checkstyle
-       timeout-minutes: 10
-       run: |
-        pylint 
+      - name: Python Checkstyle
+        timeout-minutes: 20
+        run: |
+          pylint $(git ls-files '*.py')
 
-    # - name: Send GitHub Action trigger data to Slack workflow
-    #   id: slack
-    #   uses: slackapi/slack-github-action@v1.23.0
-    #   env:
-    #     SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+      
