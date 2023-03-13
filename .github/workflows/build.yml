@@ -32,7 +32,6 @@ jobs:
           pip install pylint
 
       - name: Python Checkstyle
-        timeout-minutes: 20
         run: |
           pylint $(git ls-files '*.py')
 
