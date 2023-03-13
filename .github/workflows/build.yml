@@ -6,6 +6,9 @@ jobs:
   tests:
     runs-on: ${{ matrix.os }}
     timeout-minutes: 10
+    env:
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
 
     strategy:
       matrix:
@@ -29,12 +32,14 @@ jobs:
         run: |
           python -m pytest
 
-      - name: Send GitHub Action trigger data to Slack workflow
-        id: slack
-        uses: slackapi/slack-github-action@v1.23.0
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-          
+       - name: Slack Notification
+      uses: act10ns/slack@v1
+      with: 
+        status: starting
+        channel: '#meetups'
+        message: Starting Build and Deploy...
+      if: always()
+
       - name: Python Checkstyle
       timeout-minutes: 10
       run: |
