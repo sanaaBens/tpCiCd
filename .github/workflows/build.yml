@@ -33,8 +33,8 @@ jobs:
         id: slack
         uses: slackapi/slack-github-action@v1.23.0
         env:
-          SLACK_WEBHOOK_URL: https://hooks.slack.com/services/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 
-
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          
       - name: Python Checkstyle
       timeout-minutes: 10
       run: |
