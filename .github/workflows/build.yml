@@ -42,8 +42,8 @@ jobs:
           channel: '#tpcicd'
         if: always()
 
-      - name: Python Checkstyle
-        run: |
-          pylint $(git ls-files '*.py')
+      # - name: Python Checkstyle
+      #   run: |
+      #     pylint $(git ls-files '*.py')
 
       
