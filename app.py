@@ -1,8 +1,15 @@
-def addition(a, b):
-    return a + b
+""" file app"""
+# function addition
+def addition(nb1 , nb2):
+    """ function addition """
+    return nb1 + nb2
 
-def soustraction(a, b):
-    return a - b
+# function soustraction
+def soustraction(nb1 , nb2):
+    """ function soustraction """
+    return nb1 - nb2
 
-def multiplication (a, b):
-    return a * b
+# function multiplication
+def multiplication (nb1 , nb2):
+    """ function multiplication """
+    return nb1 * nb2
